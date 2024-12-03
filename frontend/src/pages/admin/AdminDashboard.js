@@ -1,7 +1,7 @@
 const AdminDashboard = () => {
     return ( 
     <div>
-        <h1>The borrowed books go here</h1>
+        <h1>Hello Admin, you are logged in</h1>
     </div> );
 }
  

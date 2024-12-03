@@ -1,9 +1,15 @@
 import './App.css';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
 import RootLayout from './layouts/RootLayout';
 import { UserProvider } from './UserContext';
 import { Route, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import StudentDashboard from './pages/student/StudentDashboard';
+import AdminLayout from './pages/admin/AdminLayout';
+import AllBorrowedBooks from './pages/admin/AllBorrowedHistory';
+import AllReturnedBooks from './pages/admin/AllReturnedBooks';
+import AllStudents from './pages/admin/AllStudents';
+import AllBooks from './pages/admin/AllBooks';
 
 const router = createBrowserRouter(
   [
@@ -16,9 +22,39 @@ const router = createBrowserRouter(
       element: <Login />
     },
     {
-      path: "/dashboard",
-      element: <Dashboard />
-    }
+      path: "/admin-dashboard",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "",
+          element: <AdminDashboard />
+        },
+        {
+          path: "students",
+          element: <AllStudents />
+        },
+        {
+          path: "books",
+          element: <AllBooks />,
+          children: [
+            {
+              path: "borrowed",
+              element: <AllBorrowedBooks />
+            },
+            {
+              path: "returned",
+              element: <AllReturnedBooks />
+            }
+          ]
+        }
+        
+      ]
+    },
+    {
+      path: "/student-dashboard",
+      element: <StudentDashboard />
+    },
+
   ]
 );
 

@@ -9,17 +9,17 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { setUser } = useUserContext();
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         
         e.preventDefault();
         if(username === 'test1' && password === 'password') {
             setUser({ name: 'Test Student', role: 'student'});
-            Navigate("/dashboard");
+            navigate("/student-dashboard");
         } else if(username === 'test2' && password === 'password') {
             setUser({ name: 'Test Admin', role: 'admin'});
-            Navigate("/dashboard");
+            navigate("/admin-dashboard");
         }
             else {
             alert("Invalid credentials");
